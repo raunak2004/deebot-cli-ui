@@ -1,0 +1,8 @@
+/target
+/.venv
+__pycache__/
+.DS_Store
+# Local assistant settings
+/.claude
+# Built app packages
+*.apk

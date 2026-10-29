@@ -1,0 +1,23 @@
+[package]
+name = "deebot-cli"
+version = "0.1.0"
+edition = "2021"
+description = "CLI for Ecovacs Deebot robots (talks to the Ecovacs cloud)"
+
+[workspace]
+members = ["crates/deebot-core", "crates/deebot-ui"]
+
+[[bin]]
+name = "deebot-cli"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive", "env"] }
+deebot-core = { path = "crates/deebot-core", features = ["clap"] }
+rpassword = "7.5.4"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+
+# Android builds default to the dev profile; unoptimized egui is too slow on a phone
+[profile.dev]
+opt-level = 2
